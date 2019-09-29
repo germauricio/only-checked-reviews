@@ -30,7 +30,20 @@ repos.then(function(listOfRepos) {
 				console.log("-----------------------\n\n")
 
 			for(var k = 0; k < pull.length; k++){
+				
 				console.log(pull[k].title)
+			
+				var reviews = Promise.resolve(octokit.pulls.listReviews({
+  				    owner : author ,
+				    repo : 'Alquimistas' ,
+				    pull_number : pull[k].number
+				}));
+
+				reviews.then(function(listOfReviews){
+					var review = listOfReviews.data;
+
+					console.log(review.body)
+				});	
 			}
 
 		});

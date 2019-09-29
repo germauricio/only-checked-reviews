@@ -1,0 +1,16 @@
+{
+  "name": "gitportafolio",
+  "version": "1.0.0",
+  "description": "back de git para el portfolio",
+  "main": "git.js",
+  "scripts": {
+    "start": "node git.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "german",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^16.30.0",
+    "promises": "^0.2.5"
+  }
+}

@@ -2,7 +2,10 @@ var Octokit = require("@octokit/rest");
 
 var octokit = new Octokit();
 
-var author = 'germauricio'
+var clientWithAuth = new Octokit({
+  auth: "6a699e13458a32e804a01d8967493b541d849f4d"
+});
+var author = 'germauricio';
 
 var repos = Promise.resolve(octokit.repos.listForUser({
   username: author
@@ -27,11 +30,9 @@ repos.then(function(listOfRepos) {
 
 				var pull = listOfPulls.data
 
-				console.log("-----------------------\n\n")
-
 			for(var k = 0; k < pull.length; k++){
 				
-				console.log(pull[k].title)
+				console.log("Pull Requests:\n " + pull[k].title)
 			
 				var reviews = Promise.resolve(octokit.pulls.listReviews({
   				    owner : author ,
@@ -42,7 +43,7 @@ repos.then(function(listOfRepos) {
 				reviews.then(function(listOfReviews){
 					var review = listOfReviews.data;
 
-					console.log(review.body)
+					console.log("Review body: \n " + review[0].body)
 				});	
 			}
 
